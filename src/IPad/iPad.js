@@ -88,7 +88,6 @@ const IPad = () => {
     e.target.style.marginTop = '4px';
     e.target.getElementsByClassName('imgDiv')[0].style.opacity = 1;
     getRef(dockWrapperRef).bottom = 0;
-    console.log(window.barColor);
     getRef(inAppRef).setProperty('--color', window.barColor);
     getRef(inAppRef).bottom = '0';
     getRef(inAppRef).pointerEvents = 'all';
@@ -117,17 +116,6 @@ const IPad = () => {
       x[i].style.margin = 'calc(var(--size) / 60) calc(var(--size) / 120)';
       x[i].style.pointerEvents = 'all';
       x[i].getElementsByClassName('imgDiv')[0].style.opacity = 0;
-      if (lockStatus) {
-        x[i].style.transition =
-          'all 0s ease-in-out 350ms, transform 100ms ease-in-out 0s';
-        x[i].getElementsByClassName('imgDiv')[0].style.transition =
-          'opacity 350ms linear 0s';
-      } else {
-        x[i].style.transition =
-          'all 500ms ease-in-out 0s, transform 100ms ease-in-out 0s';
-        x[i].getElementsByClassName('imgDiv')[0].style.transition =
-          'opacity 300ms linear 0s';
-      }
     }
   };
 
@@ -172,16 +160,6 @@ const IPad = () => {
                 <div className='imgDiv' ref={iconImageRef}></div>
               </div>
               <div className='iconDivider'></div>
-              {/* <div
-                className='iconDiv'
-                ref={iconDivRef}
-                onClick={(e) => {
-                  window.barColor = 'black';
-                  iconClick(e);
-                }}
-              >
-                <div className='imgDiv' ref={iconImageRef}></div>
-              </div> */}
               <div
                 className='iconDiv'
                 ref={iconDivRef}
@@ -214,4 +192,4 @@ const IPad = () => {
   );
 };
 
-export default IPad;
+export default React.memo(IPad);
