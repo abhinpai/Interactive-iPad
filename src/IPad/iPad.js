@@ -73,12 +73,7 @@ const IPad = () => {
     getRef(dockWrapperRef).bottom = '3%';
   };
 
-  const iconClick = (event) => {
-    // window.lastIcon = true;
-    iconClickHandler(event);
-  };
-
-  const iconClickHandler = (e) => {
+  const iconClick = (e) => {
     let x = document.getElementsByClassName('iconDiv');
     for (let i = 0; i < x.length; i++) {
       x[i].style.width = 0;
@@ -87,11 +82,6 @@ const IPad = () => {
       x[i].style.pointerEvents = 'none';
       x[i].getElementsByClassName('imgDiv')[0].style.opacity = 0;
     }
-    //   if (window.lastIcon) {
-    //     e.target.style.width = "calc(var(--size) * 1)";
-    //   } else {
-    //     e.target.style.width = "calc(var(--size) * .96)";
-    //   }
     e.target.style.width = 'calc(var(--size) * 1)';
     e.target.style.height = 'calc(var(--size) * .74)';
     e.target.style.marginLeft = 'calc(var(--size) / 35)';
