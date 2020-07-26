@@ -1,0 +1,349 @@
+:root {
+    --size: 90vmin;
+    --bgUrl: 'https://assets.codepen.io/2722301/bg.jpg';
+  }
+  
+  body {
+    background-color: black;
+  }
+  
+  .ipadDiv {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
+  
+  .ipadDiv {
+    width: var(--size);
+    height: calc(var(--size) * 0.77);
+    background-color: #121212;
+    border-radius: calc(var(--size) / 24);
+    box-shadow: 0 0 0 calc(var(--size) / 200) #9d9ea0;
+  }
+  
+  .ipadDiv::before,
+  .ipadDiv::after {
+    content: '';
+    cursor: pointer;
+    position: absolute;
+    width: 4%;
+    height: 1%;
+    left: 6%;
+    top: -1.2%;
+    border-radius: calc(var(--size) / 24) calc(var(--size) / 24) 0 0;
+    background-color: #8a8a8a;
+    z-index: -1;
+  }
+  
+  .ipadDiv:after {
+    left: 11%;
+  }
+  
+  .powerButton {
+    background-color: #8a8a8a;
+    z-index: -1;
+    left: -1.5vmin;
+    position: absolute;
+    height: 7%;
+    width: fit-content;
+    padding: 0;
+    top: 5%;
+    padding-right: 0.7vmin;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: transparent;
+    border-radius: calc(var(--size) / 24) 0 0 calc(var(--size) / 24);
+    //   animation: powerBtnAnim 3000ms ease-in infinite;
+  }
+  
+  .screen {
+    position: absolute;
+    width: 95%;
+    height: 93.6%;
+    top: 3.2%;
+    left: 2.5%;
+    opacity: 0;
+    background-color: #aaaaaa;
+    border-radius: calc(var(--size) / 40);
+    overflow: hidden;
+    transition: opacity 300ms linear;
+  }
+  
+  .wallpaper,
+  .lockContent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: url('https://assets.codepen.io/2722301/bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: black;
+  }
+  
+  .lockScreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    cursor: pointer;
+    overflow: hidden;
+    backdrop-filter: blur(0);
+    transition: top 1000ms ease-in 0s, backdrop-filter 200ms ease-in 0s;
+  }
+  
+  .lockContent {
+    background: none;
+  }
+  .statusBar {
+    width: 100%;
+    height: 6%;
+  }
+  
+  .lockIcon {
+    width: 100;
+    height: 5%;
+    background-image: url('https://assets.codepen.io/2722301/lock.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .dateTime {
+    width: 100%;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 200;
+    font-size: calc(var(--size) / 46);
+    color: white;
+    text-align: center;
+    line-height: 250%;
+    margin-top: 3%;
+  }
+  
+  .time {
+    margin-left: 4%;
+    font-size: calc(var(--size) / 10.5);
+  }
+  
+  .meridiem {
+    margin-left: -2%;
+  }
+  
+  #inAppBar {
+    cursor: pointer;
+  }
+  
+  .interactionBar {
+    --color: white;
+    position: absolute;
+    bottom: -8%;
+    height: 3%;
+    width: 100%;
+    transition: bottom 800ms ease-in 0s;
+  }
+  
+  .lockScreen .interactionBar {
+    bottom: 4%;
+  }
+  
+  .interactionBar::after {
+    
+    content: '';
+    position: absolute;
+    width: 28%;
+    height: 30%;
+    top: 4%;
+    margin-left: 36%;
+    border-radius: 100px;
+    background-color: var(--color);
+  }
+  
+  .lockScreen .interactionBar::after {
+    animation: interactionAnim 4000ms ease-in infinite;
+  }
+  
+  .lockScreen .interactionBar::before {
+    position: absolute;
+    width: 100%;
+    top: -20px;
+    text-align: center;
+    color: white;
+    content: 'swipe up to open';
+    font-size: calc(var(--size) / 46);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 200;
+    animation: interTextAnim 4000ms ease-in infinite;
+  }
+  
+  .dockWrapper {
+    position: absolute;
+    width: 100%;
+    bottom: -20%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    //   height: 20%; // Remove later
+    transition: bottom 400ms ease-in-out 0s;
+  
+    & > .dockBar {
+      // display: inline-flex;
+      // padding: 0 calc(var(--size) / 120);
+      // border-radius: calc(var(--size) / 40);
+      // background-color: rgba(0, 0, 0, 0.3);
+      // backdrop-filter: blur(1vh);
+  
+      // height: 100%; // Remove later
+      // width: 80%; // Remove later
+  
+      // & > .iconDiv , .iconDivider {
+      //     background-color: red;
+      //     display: inline-flex;
+      //     width: calc(var(--sizeVar) / 20);
+      //     height: calc(var(--sizeVar) / 20);
+      //     margin: calc(var(--sizeVar) / 60) calc(var(--sizeVar) / 120);
+      //     border-radius: calc(var(--sizeVar) / 80);
+      // }
+    }
+  }
+  
+  .dockWrapper .dockBar {
+    display: inline-flex;
+    padding: 0 calc(var(--size) / 120);
+    border-radius: calc(var(--size) / 40);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(1vh);
+  }
+  
+  .dockBar .iconDiv,
+  .dockBar .iconDivider {
+    display: inline-flex;
+    width: calc(var(--size) / 20);
+    height: calc(var(--size) / 20);
+    margin: calc(var(--size) / 60) calc(var(--size) / 120);
+    border-radius: calc(var(--size) / 80);
+  }
+  
+  .dockBar .iconDiv {
+    background-color: #ffffff;
+    cursor: pointer;
+    overflow: hidden;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/pai-profile.appspot.com/o/imgs%2Fgithub-tile.svg?alt=media&token=fda65f46-977f-4150-aeb5-8895d9b4abee);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 500ms ease-in-out 0s, transform 100ms ease-in-out 0s;
+  }
+  
+  .iconDiv:nth-of-type(2) {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/pai-profile.appspot.com/o/imgs%2Ftwitter-tile.svg?alt=media&token=cf83bf95-ce0e-44e6-ba37-a5e59260adb9);
+  }
+  .iconDiv:nth-of-type(3) {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/pai-profile.appspot.com/o/imgs%2Flinkedin-tile.svg?alt=media&token=862cd562-0889-4668-a7cb-4a579dfe4220);
+  }
+  // .iconDiv:nth-of-type() {
+  //   background-image: url(https://assets.codepen.io/2722301/icon_md.png);
+  // }
+  .iconDiv:nth-of-type(5) {
+    background-image: url(https://assets.codepen.io/2722301/icon_cm.png);
+  }
+  
+  .dockBar .iconDivider {
+    width: calc(var(--size) / 200);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dockBar .iconDiv:hover {
+    transform: scale(1.1);
+  }
+  
+  .iconDiv .imgDiv {
+    position: absolute;
+    border: none;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/pai-profile.appspot.com/o/imgs%2Fgc.png?alt=media&token=fbc7e410-e7db-4858-89c3-2287f968ec6f);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 300ms linear 0s;
+  }
+  
+  .iconDiv:nth-of-type(2) .imgDiv {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/pai-profile.appspot.com/o/imgs%2Ftwitter.com_paiabhin.png?alt=media&token=45c1a7d7-de9d-4828-8492-fd4b9895008a);
+  }
+  .iconDiv:nth-of-type(3) .imgDiv {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/pai-profile.appspot.com/o/imgs%2Flin_sc.png?alt=media&token=916f4562-248a-4523-82cf-69d5f6595051);
+  }
+  // .iconDiv:nth-of-type(5) .imgDiv {
+  //   background-image: url(https://firebasestorage.googleapis.com/v0/b/pai-profile.appspot.com/o/imgs%2Fmedium_sc.png?alt=media&token=d820b592-c9ed-4a7d-acbf-3c090ce27a71);
+  // }
+  .iconDiv:nth-of-type(5) .imgDiv {
+    background-image: url(https://assets.codepen.io/2722301/img_cm.jpg);
+  }
+  
+  .dockWrapper {
+    transition: all 500ms linear;
+  }
+  
+  @keyframes interTextAnim {
+    0% {
+      opacity: 0;
+      top: -100%;
+    }
+    40% {
+      opacity: 0;
+      top: -100%;
+    }
+    60% {
+      opacity: 1;
+      top: -200%;
+    }
+    82% {
+      opacity: 1;
+      top: -200%;
+    }
+    100% {
+      opacity: 0;
+      top: -200%;
+    }
+  }
+  
+  @keyframes interactionAnim {
+    0% {
+      top: 0;
+    }
+    40% {
+      top: 0;
+    }
+    60% {
+      top: -50%;
+    }
+    82% {
+      top: 0;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  
+  @keyframes powerBtnAnim {
+    0% {
+      left: -1.5vmin;
+    }
+    40% {
+      left: -1.2vmin;
+    }
+    60% {
+      left: -1vmin;
+    }
+    82% {
+      left: -1.2vmin;
+    }
+    100% {
+      left: -1.5vmin;
+    }
+  }
+  

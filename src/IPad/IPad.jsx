@@ -1,1 +1,0 @@
-import './IPad.scss';
